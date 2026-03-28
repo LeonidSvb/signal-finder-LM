@@ -147,14 +147,13 @@ def render_loading():
     update_progress(0)
 
     import threading
+    url = st.session_state.url
+    selected_indices = st.session_state.selected_indices
     result_container = {"report": None, "error": None}
 
     def run_analysis():
         try:
-            report = run_full_analysis(
-                st.session_state.url,
-                st.session_state.selected_indices,
-            )
+            report = run_full_analysis(url, selected_indices)
             result_container["report"] = report
         except Exception as e:
             result_container["error"] = str(e)
