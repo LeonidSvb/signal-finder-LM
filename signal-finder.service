@@ -1,0 +1,13 @@
+[Unit]
+Description=Signal Finder Streamlit App
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/root/signal-finder-LM
+ExecStart=/usr/local/bin/streamlit run ui/streamlit_app.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
